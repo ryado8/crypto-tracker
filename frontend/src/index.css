@@ -1,0 +1,30 @@
+/* Design tokens and base styles for the whole app. Values come from DESIGN.md. */
+
+:root {
+  --frost: #f4f3f8;
+  --surface: #ffffff;
+  --ink: #1c1726;
+  --muted: #655d72; /* Plum muted */
+  --line: #e6e2ee;
+  --chip: #ece8f2;
+  --aub: #2b1335; /* Aubergine */
+  --aub-2: #3a1e47; /* Aubergine 2 */
+  --aub-3: #4a2a58; /* Aubergine 3 */
+  --aub-text: #f3eaf5; /* Aubergine text */
+  --aub-muted: #bda9c7; /* Aubergine muted */
+  --mag: #d42a6b; /* Signal magenta */
+  --mag-hover: #b81f5a; /* Signal magenta hover */
+  --mag-soft: #fbe4ee; /* Signal magenta soft */
+  --mag-light: #ff7aaa; /* Signal magenta light */
+  --hit: #0e7a52; /* Hit green */
+  --hit-soft: #ddf2e8; /* Hit green soft */
+  --hit-light: #6fddab; /* Hit green light */
+  --shadow: 0 1px 2px rgba(43, 19, 53, 0.06), 0 6px 18px rgba(43, 19, 53, 0.07);
+}
+
+body {
+  margin: 0;
+  background: var(--frost);
+  color: var(--ink);
+  font-family: "Hanken Grotesk", sans-serif;
+}

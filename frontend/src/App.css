@@ -1,0 +1,48 @@
+/* Layout and look of the Targets page. Colours, shadow and font come from the tokens in index.css. */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 32px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  padding: 24px 32px;
+}
+
+.targets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--aub);
+  color: var(--aub-text);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.panel .placeholder {
+  background: var(--aub-2);
+  border-color: var(--aub-3);
+  color: var(--aub-muted);
+  box-shadow: none;
+}
+
+.placeholder {
+  background: var(--surface);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--muted);
+  box-shadow: var(--shadow);
+}

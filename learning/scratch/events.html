@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Coin watch</title>
+<script>
+	document.addEventListener('DOMContentLoaded', e => {
+    	const button = document.querySelector('button');
+        const par = document.querySelector('p');
+        
+        button.addEventListener('click', e => {
+        	par.textContent = "Watching 1 coin"
+        })
+        
+        button.click();
+    })
+</script>
+</head>
+<body>
+	<button>Watch Solana</button>
+	<p>Watching 0 coins</p>
+</body>
+</html>

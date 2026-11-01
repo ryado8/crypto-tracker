@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", (e) => {
+        let cardIndex = 0;
+        let par = document.querySelector("p");
+        let button = document.querySelector("button");
+        const words = ["猫", "犬", "鳥"];
+        function draw() {
+          par.textContent = words[cardIndex];
+        }
+
+        button.addEventListener("click", (e) => {
+          cardIndex++;
+          draw();
+        });
+
+        button.click();
+        button.click();
+      });
+    </script>
+  </head>
+  <body>
+    <p></p>
+    <button>Next card</button>
+  </body>
+</html>

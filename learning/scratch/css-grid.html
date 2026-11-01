@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanji study</title>
+  <style>
+    :root {
+      --page-background: #FFF8E7;
+      --accent: #2F6F4E;
+      --muted: 	#cccccc;
+    }
+
+    body {
+      background: var(--page-background);
+    }
+    
+    section {
+      background: white;
+      padding: 10px;
+      border-radius: 15px;
+      border-left: 4px solid var(--accent);
+      margin-bottom: 10px;
+    }
+
+    section p,
+    nav a {
+      color: var(--muted);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 140px;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kanji study</h1>
+    <nav>
+      <a href="#">Today</a>
+      <a href="#">Decks</a>
+      <a href="#">Stats</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Study</h2>
+      <p>Study the new Kanji!</p>
+    </section>
+    <section>
+      <h2>Review</h2>
+      <p>Review Kanji!</p>
+    </section>
+  </main>
+</body>
+</html>

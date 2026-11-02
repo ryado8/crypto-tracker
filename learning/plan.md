@@ -44,9 +44,9 @@ A React app where Targets, New target, Readings, Job runs and JSON are real page
   The Targets page shows its placeholder blocks in the prototype's colours, fonts and spacing, defined once as shared tokens.
 - [x] Turn each screen into a component
   All five screens exist as their own components with a labelled placeholder for every part they will hold.
-- [ ] Give each screen its own address ← you are here
+- [x] Give each screen its own address
   Typing each page's address opens it, and New target opens from Targets with a working back control.
-- [ ] Build the shared navigation
+- [ ] Build the shared navigation ← you are here
   The navigation to Targets, Readings, Job runs and JSON shows on every screen and marks the current page with aria-current, keeping Targets marked on New target.
 
 ## 02 · Every reading saved in PostgreSQL

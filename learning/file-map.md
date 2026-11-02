@@ -12,10 +12,12 @@ Every file in this project and why it exists.
 - `frontend/` — known. The React app, made with Vite in lesson 6 (`npm create vite@latest frontend -- --template react`). Its own dependencies and tools, separate from `backend/`. Run it with `npm run dev` from here.
   - `frontend/index.html` — known. The one page the browser downloads; React draws everything into its `root` div. Lesson 7: Claude added the Google Fonts `<link>` (Hanken Grotesk, JetBrains Mono) and the "Tripwire" tab title.
   - `frontend/src/main.jsx` — known. Loaded by `index.html`; tells React to draw `App` into `root`. Rarely edited.
-  - `frontend/src/App.jsx` — known. The top of the app. Since lesson 8 it only imports the five screen components and shows them stacked one after another; the next lesson replaces that with one screen per address.
+  - `frontend/src/App.jsx` — known. The top of the app. Since lesson 9 it keeps the current path in state (`useState(window.location.pathname)`) and `screenFor(path)` picks one screen per path (`/`, `/new-target`, `/readings`, `/job-runs`, `/json`, else "Page not found."). You wrote `handleAddressChange` (`setPath(window.location.pathname)`), which a `popstate` listener calls; the `useEffect` that adds and removes that listener was scaffolded and comes due in the "Load targets into the Targets page" lesson.
+  - `frontend/src/router.js` — known. Your `navigate(to)`: `pushState` moves the address without a reload, then it dispatches a `popstate` event so `App` hears about it and redraws. Every in-app link goes through it.
   - `frontend/src/screens/` — known. One file per screen, each exporting one component you wrote in lesson 8, with a labelled placeholder for every part `DESIGN.md` lists. Later tasks fill these in one at a time.
-    - `TargetsScreen.jsx` — the Targets page (moved here from `App.jsx`), with a real New target button whose `handleNewTarget` logs a message on click.
-    - `NewTargetScreen.jsx`, `ReadingsScreen.jsx`, `JobRunsScreen.jsx`, `JsonScreen.jsx` — the other four screens, placeholders only.
+    - `TargetsScreen.jsx` — the Targets page (moved here from `App.jsx`), with a real New target button; your `handleNewTarget` calls `navigate("/new-target")`.
+    - `NewTargetScreen.jsx` — the New target page, placeholders plus a Back to Targets button; your `handleBack` calls `navigate("/")`.
+    - `ReadingsScreen.jsx`, `JobRunsScreen.jsx`, `JsonScreen.jsx` — the other three screens, placeholders only.
   - `frontend/src/index.css` — known. Your design tokens: every `DESIGN.md` colour and the shared `--shadow` on `:root`, plus the base `body` style (Frost, Ink, Hanken Grotesk). Loaded once for the whole app by `main.jsx`; every screen reads these.
   - `frontend/src/App.css` — known. Your Targets page layout: the flex top bar, the `2fr 1fr` grid, the column stacks, the aubergine panel, and the placeholder look.
   - `frontend/package.json` — known. Like `pyproject.toml`: React as a dependency, Vite and ESLint as dev dependencies, and the `dev`/`build` scripts.
@@ -25,6 +27,7 @@ Every file in this project and why it exists.
   - `frontend/public/`, `frontend/src/assets/` — parked. The starter's icons and images. Nothing uses them since the Targets page replaced the starter; safe to remove when we tidy up for the first commit.
   - `frontend/eslint.config.js` — parked. Settings for ESLint, a code checker. Comes up when we use it.
   - `frontend/README.md`, `frontend/.gitignore` — parked. Vite's readme, and which files Git ignores (the "Commit the working project" lesson).
+- `ex.html` — parked. A small page at the project root that uses `history.pushState`, much like `learning/scratch/push-state.html`. Nothing in the app uses it; probably a stray practice copy, safe to delete or move into `learning/scratch/` when we tidy up for the first commit.
 - `learning/` — known. Your learning notes: the plan, this map, and your scratch drills.
   - `learning/plan.md` — known. Your journey's sections and tasks, regenerated from Altitude each lesson. Edit the plan on the web, not here.
   - `learning/file-map.md` — known. This file.
@@ -43,7 +46,11 @@ Every file in this project and why it exists.
     - `learning/scratch/the-browser.html` — known. Lesson 6 drill: setting a paragraph's text from a script in the `<head>`, waiting for `DOMContentLoaded`.
     - `learning/scratch/html-structure.html`, `css-basics.html`, `css-tokens.html` — known. Lesson 7 drills: a Kanji study page's header/nav/main/sections, then custom properties with `var()`, and a border that needs a width and style as well as a colour.
     - `learning/scratch/css-flex.html`, `css-grid.html` — known. Lesson 7 drills: flex only arranges an element's direct children, and a `1fr 140px` grid where `gap` does the spacing.
-    - `learning/scratch/package.json`, `package-lock.json`, `node_modules/` — known. Lesson 8 setup so drills can run JSX from your terminal: React, react-dom and `tsx` (a tool that lets Node run `.jsx` files). Run a drill with `npx tsx <file>` from `learning/scratch/`.
+    - `learning/scratch/package.json`, `package-lock.json`, `node_modules/` — known. Lesson 8 setup so drills can run JSX from your terminal: React, react-dom and `tsx` (a tool that lets Node run `.jsx` files). Run a drill with `npx tsx <file>` from `learning/scratch/`. Reinstalled with `npm install` in lesson 9 because the copy here was built for macOS.
     - `learning/scratch/components.jsx`, `coin-badge.jsx` — known. Lesson 8 drill: a `WatchList` component using an imported `CoinBadge` three times, and why the import needs `./`.
     - `learning/scratch/events.html` — known. Lesson 8 drill: finding a button and paragraph in the DOM, and a click listener that changes the paragraph's text.
+    - `learning/scratch/url-parts.js`, `urls-routing.js` — known. Lesson 9 drills: `new URL(...).pathname` ignores `?query` and `#fragment`, but a trailing slash makes a different path.
+    - `learning/scratch/card-face.jsx`, `conditional-ui.jsx`, `conditional-ui-2.jsx` — known. Lesson 9 drills: a component returning different JSX per value, with a fallback branch. Run with `npx tsx <file>` (the page's Run button can't run `.jsx` here).
+    - `learning/scratch/next-card.html`, `state.html`, `state-2.html` — known. Lesson 9 drills: state by hand: a variable, a redraw, and a setter that does both; assigning the variable directly redraws nothing.
+    - `learning/scratch/push-state.html`, `client-side-routing.html`, `client-side-routing-2.html` — known. Lesson 9 drills: `pushState` changes the address and fires nothing; Back (`history.back()`) fires `popstate`.
     - `learning/scratch/__pycache__/` — known. Machine-made: Python's saved compiled copy of `money.py` from importing it. Safe to delete; Python rebuilds it.

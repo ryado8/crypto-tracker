@@ -1,0 +1,35 @@
+<p id="coin"></p>
+<button id="btc">BTC</button>
+<button id="eth">ETH</button>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const p = document.querySelector("#coin");
+    const btcButton = document.querySelector("#btc");
+    const ethButton = document.querySelector("#eth");
+
+    let coin = "";
+
+    function redraw() {
+      if (coin === "BTC") {
+        p.textContent = "Bitcoin selected";
+      } else if (coin === "ETH") {
+        p.textContent = "Ethereum selected";
+      } else {
+        p.textContent = "Pick a coin";
+      }
+    }
+
+    function setCurrency(next) {
+      coin = next;
+      redraw();
+    }
+
+    btcButton.addEventListener("click", () => setCurrency("BTC"));
+    ethButton.addEventListener("click", () => setCurrency("ETH"));
+    redraw();
+
+    btcButton.click();
+    ethButton.click();
+    coin = "DOGE";
+  });
+</script>

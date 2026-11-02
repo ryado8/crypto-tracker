@@ -1,0 +1,29 @@
+<p id="currency"></p>
+<button id="usd">"USD"</button>
+<button id="eur">"EUR"</button>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const p = document.querySelector("#currency");
+    button = document.querySelector('button');
+    const usdButton = document.querySelector("#usd");
+    const eurButton = document.querySelector("#eur");
+
+    let currency = "USD";            // the state: the value we remember
+
+    function update() {      
+      p.textContent = `${currency}`;
+    }
+
+    function setCurrency(next) { // the setter: store, then redraw
+      currency = next;
+      update();
+    }
+
+    button.addEventListener("click", (e) => setCurrency(e.target.textContent));
+    update();                     
+
+    eurButton.click();              
+    usdButton.click();
+    currency = "JPY";
+  });
+</script>

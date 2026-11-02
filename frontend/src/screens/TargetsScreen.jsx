@@ -2,7 +2,7 @@ import { navigate } from "../router";
 
 export function TargetsScreen() {
   function handleNewTarget() {
-    // TODO(you): go to the New target screen
+    navigate("/new-target");
   }
 
   return (

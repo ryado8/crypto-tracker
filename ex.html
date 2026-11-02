@@ -1,19 +1,29 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script>
-      document.addEventListener("DOMContentLoaded", (e) => {
-        const par = document.querySelector("p");
-        let visits = 1;
-        history.pushState(null, "", "/lesson-2");
-        par.textContent = `${location.pathname}/${visits}`;
-      });
-    </script>
-  </head>
-  <body>
-    <p></p>
-  </body>
-</html>
+<p id="where"></p>
+<button id="watchlist">Watchlist</button>
+<button id="settings">Settings</button>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const p = document.querySelector("#where");
+    const watchlistButton = document.querySelector('#watchlist');
+    const settingsButton = document.querySelector('#settings');
+
+    function show() {
+      p.textContent = `You are on ${location.pathname}`;
+    }
+
+    window.addEventListener("popstate", show);
+
+    watchlistButton.addEventListener("click", () => {
+      history.pushState(null, "", "/watchlist");
+    });
+
+    settingsButton.addEventListener("click", () => {
+      history.pushState(null, "", "/settings");
+    });
+
+    show();
+    watchlistButton.click();
+    settingsButton.click();
+    history.back();
+  });
+</script>

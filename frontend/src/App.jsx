@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     function handleAddressChange() {
-      // TODO(you): update the state to the address the browser now shows
+      setPath(window.location.pathname);
     }
     window.addEventListener("popstate", handleAddressChange);
     return () => window.removeEventListener("popstate", handleAddressChange);

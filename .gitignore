@@ -1,0 +1,5 @@
+# Files Git should never track, anywhere in this project: machine-made, rebuildable, or throwaway.
+node_modules
+__pycache__
+backend/.venv
+learning/scratch/git-practice

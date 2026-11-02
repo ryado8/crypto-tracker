@@ -20,9 +20,20 @@ function screenFor(path) {
     case "/json":
       return <JsonScreen />;
     default:
-      return <h1>Page not found.</h1>;
+      return <RedirectHome />;
   }
 }
+
+// For an address with no screen: swaps it for "/" without adding a history
+// entry, so Back still works, then tells App the address changed.
+function RedirectHome() {
+  useEffect(() => {
+    history.replaceState(null, "", "/");
+    window.dispatchEvent(new Event("popstate"));
+  }, []);
+  return null;
+}
+
 // Which nav item counts as current for a path. New target isn't in the nav,
 // so Targets (where you came from) stays marked there.
 function navPathFor(path) {
@@ -40,6 +51,8 @@ function App() {
       setPath(window.location.pathname);
     }
     window.addEventListener("popstate", handleAddressChange);
+    // Catch up on any address change made before App was listening.
+    handleAddressChange();
     return () => window.removeEventListener("popstate", handleAddressChange);
   }, []);
 

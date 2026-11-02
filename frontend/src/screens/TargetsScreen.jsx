@@ -7,11 +7,6 @@ export function TargetsScreen() {
 
   return (
     <>
-      <header className="topbar">
-        <div className="placeholder">Brand</div>
-        <div className="placeholder">Nav</div>
-        <div className="placeholder">Job status</div>
-      </header>
       <div className="layout">
         <main className="targets">
           <h1>Targets</h1>

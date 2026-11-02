@@ -5,6 +5,7 @@ import { JsonScreen } from "./screens/JsonScreen";
 import { NewTargetScreen } from "./screens/NewTargetScreen";
 import { ReadingsScreen } from "./screens/ReadingsScreen";
 import { TargetsScreen } from "./screens/TargetsScreen";
+import { TopBar } from "./components/TopBar";
 
 function screenFor(path) {
   switch (path) {
@@ -22,6 +23,15 @@ function screenFor(path) {
       return <h1>Page not found.</h1>;
   }
 }
+// Which nav item counts as current for a path. New target isn't in the nav,
+// so Targets (where you came from) stays marked there.
+function navPathFor(path) {
+  if (path === "/new-target") {
+    return "/";
+  }
+  return path;
+}
+
 function App() {
   const [path, setPath] = useState(window.location.pathname);
 
@@ -33,7 +43,12 @@ function App() {
     return () => window.removeEventListener("popstate", handleAddressChange);
   }, []);
 
-  return screenFor(path);
+  return (
+    <>
+      <TopBar currentPath={navPathFor(path)} />
+      {screenFor(path)}
+    </>
+  );
 }
 
 export default App;

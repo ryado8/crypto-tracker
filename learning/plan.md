@@ -46,13 +46,13 @@ A React app where Targets, New target, Readings, Job runs and JSON are real page
   All five screens exist as their own components with a labelled placeholder for every part they will hold.
 - [x] Give each screen its own address
   Typing each page's address opens it, and New target opens from Targets with a working back control.
-- [ ] Build the shared navigation ← you are here
+- [x] Build the shared navigation
   The navigation to Targets, Readings, Job runs and JSON shows on every screen and marks the current page with aria-current, keeping Targets marked on New target.
 
 ## 02 · Every reading saved in PostgreSQL
 Your work is safely in Git, and each run of the price checker stores one timestamped reading per coin in PostgreSQL through SQLModel.
 
-- [ ] Commit the working project
+- [ ] Commit the working project ← you are here
   The price checker and app shell are committed, and you read the diff of a small change you asked Claude Code to make before accepting it.
 - [ ] Design the readings table
   A local PostgreSQL database has a readings table with coin, price and time, and you query a hand-inserted row.

@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japanese Study</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll("nav > a");
+        navLinks.forEach(
+          (link) =>
+            (link.textContent =
+              link.textContent + " " + new URL(link.href).pathname),
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Kotoba</h1>
+      <nav>
+        <a href="/vocab">Vocab</a>
+        <a href="/grammar">Grammar</a>
+        <a href="/tutor-notes">Tutor Notes</a>
+      </nav>
+    </header>
+    <main>
+      <h2>Vocab</h2>
+    </main>
+  </body>
+</html>

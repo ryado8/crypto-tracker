@@ -1,0 +1,28 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japanese</title>
+    <style>
+      [aria-current="step"] {
+        background: pink;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const currentStep = document.querySelector('[aria-current="step"]');
+        console.log(currentStep.textContent);
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <ol>
+        <li>Warm-up</li>
+        <li>Vocab</li>
+        <li aria-current="step">Roleplay</li>
+        <li>Corrections</li>
+      </ol>
+    </main>
+  </body>
+</html>

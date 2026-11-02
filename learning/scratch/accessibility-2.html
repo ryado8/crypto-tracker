@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japanese</title>
+    <style>
+      [aria-current="step"] {
+        background: pink;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        function markCurrent(stepName) {
+          const listElements = document.querySelectorAll("li");
+          listElements.forEach((el) => {
+            if (el.textContent === stepName) {
+              el.setAttribute("aria-current", "step");
+            } else {
+              el.removeAttribute("aria-current");
+            }
+          });
+        }
+
+        function countCurrent() {
+          const listElements = document.querySelectorAll("li");
+          return [...listElements].filter((el) =>
+            el.hasAttribute("aria-current"),
+          ).length;
+        }
+        markCurrent("Vocab");
+        console.log(`${countCurrent()} Vocab`);
+        markCurrent("Corrections");
+        console.log(`${countCurrent()} Corrections`);
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <ol>
+        <li aria-current="step">Warm-up</li>
+        <li>Vocab</li>
+        <li>Roleplay</li>
+        <li>Corrections</li>
+      </ol>
+    </main>
+  </body>
+</html>

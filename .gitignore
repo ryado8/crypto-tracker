@@ -2,6 +2,7 @@
 node_modules
 __pycache__
 backend/.venv
+backend/.env
 learning/scratch/git-practice
 /ex.html
 /ex.jsx

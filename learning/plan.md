@@ -56,15 +56,15 @@ Your work is safely in Git, and each run of the price checker stores one timesta
   The price checker and app shell are committed, and you read the diff of a small change you asked Claude Code to make before accepting it.
 - [x] Design the readings table
   A local PostgreSQL database has a readings table with coin, price and time, and you query a hand-inserted row.
-- [ ] Connect from Python with SQLModel ← you are here
+- [x] Connect from Python with SQLModel
   A SQLModel reading class maps to the table, the connection string comes from an environment variable, and the script inserts a reading.
-- [ ] Save each fetched price with its time
+- [x] Save each fetched price with its time
   Running the script adds four rows stamped in UTC, and a query shows them in your local time correctly.
 
 ## 03 · A FastAPI service that knows your targets
 A FastAPI service reads targets from PostgreSQL, returns them as JSON, and accepts new above or below targets while rejecting ones that make no sense.
 
-- [ ] Start the FastAPI service
+- [ ] Start the FastAPI service ← you are here
   The service starts from the terminal and answers a request in the browser, and you can describe what happens from request to response.
 - [ ] Return the target list as JSON
   GET /api/targets returns every saved target with its coin, direction, price and status straight from PostgreSQL.

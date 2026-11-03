@@ -1,6 +1,7 @@
 """Tripwire's database: the readings table as a Python class, and saving one reading."""
 
 import os
+from datetime import datetime
 from decimal import Decimal
 
 from sqlmodel import Field, Session, SQLModel, create_engine
@@ -11,22 +12,22 @@ class Reading(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     coin_id: str
     price: Decimal
+    created_at: datetime
 
 
 engine = create_engine(os.environ["DATABASE_URL"], echo=True)
 
 
-def save_reading(coin_id: str, price: Decimal) -> Reading:
-    """Insert one reading for coin_id at price and return it, with its new id."""
+def save_readings(data: dict, fetched_at: datetime) -> list[Reading]:
     with Session(engine) as session:
-        reading = Reading(coin_id=coin_id, price=price)
-        session.add(reading)
+        readings = []
+        for coin in data:
+            reading = Reading(coin_id=coin, price=Decimal(str(data[coin]["usd"])), created_at=fetched_at)
+            session.add(reading)
+            readings.append(reading)
         session.commit()
-        session.refresh(reading)
 
-    return reading
+        for reading in readings:
+            session.refresh(reading)
 
-
-if __name__ == "__main__":
-    reading = save_reading("bitcoin", Decimal("60000.50"))
-    print(reading)
+    return readings

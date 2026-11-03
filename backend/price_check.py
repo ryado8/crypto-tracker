@@ -1,6 +1,10 @@
 """Fetch the current USD price of each coin you track from CoinGecko."""
 
+from datetime import datetime, timezone
 import httpx
+
+from db import save_readings
+
 
 coins = ['bitcoin', 'ethereum', 'solana', 'dogecoin']
 
@@ -44,6 +48,8 @@ def report_target(data, target):
 if __name__ == "__main__":
     try:
         coin_data = fetch_prices(coins)
+        fetched_at = datetime.now(timezone.utc)
+        save_readings(coin_data, fetched_at)
         display_prices(coin_data)
         report_target(coin_data, target)
     except httpx.HTTPError as e:

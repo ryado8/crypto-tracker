@@ -52,11 +52,11 @@ A React app where Targets, New target, Readings, Job runs and JSON are real page
 ## 02 · Every reading saved in PostgreSQL
 Your work is safely in Git, and each run of the price checker stores one timestamped reading per coin in PostgreSQL through SQLModel.
 
-- [ ] Commit the working project ← you are here
+- [x] Commit the working project
   The price checker and app shell are committed, and you read the diff of a small change you asked Claude Code to make before accepting it.
-- [ ] Design the readings table
+- [x] Design the readings table
   A local PostgreSQL database has a readings table with coin, price and time, and you query a hand-inserted row.
-- [ ] Connect from Python with SQLModel
+- [ ] Connect from Python with SQLModel ← you are here
   A SQLModel reading class maps to the table, the connection string comes from an environment variable, and the script inserts a reading.
 - [ ] Save each fetched price with its time
   Running the script adds four rows stamped in UTC, and a query shows them in your local time correctly.

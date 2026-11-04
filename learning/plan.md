@@ -66,9 +66,9 @@ A FastAPI service reads targets from PostgreSQL, returns them as JSON, and accep
 
 - [x] Start the FastAPI service
   The service starts from the terminal and answers a request in the browser, and you can describe what happens from request to response.
-- [ ] Return the target list as JSON ← you are here
+- [x] Return the target list as JSON
   GET /api/targets returns every saved target with its coin, direction, price and status straight from PostgreSQL.
-- [ ] Describe targets with request and response models
+- [ ] Describe targets with request and response models ← you are here
   POST /api/targets accepts coin, direction and price, and the service's docs page shows the exact shapes in and out.
 - [ ] Reject targets that make no sense
   An unknown coin, a negative price, or a 'below' target already above the latest price gets a clear error and status code instead of being saved.

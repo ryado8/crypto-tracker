@@ -1,10 +1,8 @@
-"""Tripwire's database: the readings table as a Python class, and saving one reading."""
-
 import os
 from datetime import datetime
 from decimal import Decimal
 
-from sqlmodel import Field, Session, SQLModel, create_engine
+from sqlmodel import Field, Session, SQLModel, create_engine, select
 
 
 class Reading(SQLModel, table=True):
@@ -12,6 +10,16 @@ class Reading(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     coin_id: str
     price: Decimal
+    created_at: datetime
+
+
+class Target(SQLModel, table=True):
+    __tablename__ = "targets"
+    id: int | None = Field(default=None, primary_key=True)
+    coin_id: str
+    direction: str
+    price: Decimal
+    status: str
     created_at: datetime
 
 
@@ -31,3 +39,10 @@ def save_readings(data: dict, fetched_at: datetime) -> list[Reading]:
             session.refresh(reading)
 
     return readings
+
+
+def list_targets() -> list[Target]:
+    with Session(engine) as session:
+        targets = session.exec(select(Target)).all()
+
+    return targets

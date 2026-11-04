@@ -64,9 +64,9 @@ Your work is safely in Git, and each run of the price checker stores one timesta
 ## 03 · A FastAPI service that knows your targets
 A FastAPI service reads targets from PostgreSQL, returns them as JSON, and accepts new above or below targets while rejecting ones that make no sense.
 
-- [ ] Start the FastAPI service ← you are here
+- [x] Start the FastAPI service
   The service starts from the terminal and answers a request in the browser, and you can describe what happens from request to response.
-- [ ] Return the target list as JSON
+- [ ] Return the target list as JSON ← you are here
   GET /api/targets returns every saved target with its coin, direction, price and status straight from PostgreSQL.
 - [ ] Describe targets with request and response models
   POST /api/targets accepts coin, direction and price, and the service's docs page shows the exact shapes in and out.
